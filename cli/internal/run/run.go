@@ -190,7 +190,7 @@ func (r *run) run(ctx gocontext.Context, targets []string) error {
 	if r.opts.runOpts.singlePackage {
 		pkgDepGraph, err = context.SinglePackageGraph(r.base.RepoRoot, rootPackageJSON)
 	} else {
-		pkgDepGraph, err = context.BuildPackageGraph(r.base.RepoRoot, rootPackageJSON, r.opts.cacheOpts.ResolveCacheDir(r.base.RepoRoot))
+		pkgDepGraph, err = context.BuildPackageGraph(r.base.RepoRoot, rootPackageJSON, r.opts.cacheOpts.ResolveCacheDir(r.base.RepoRoot), r.opts.runOpts.devCycle)
 	}
 	if err != nil {
 		return err
@@ -534,6 +534,8 @@ type runOpts struct {
 	graphFile     string
 	noDaemon      bool
 	singlePackage bool
+	// Whether to include dev dependencies in cycle detection
+	devCycle bool
 }
 
 var (

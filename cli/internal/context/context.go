@@ -119,7 +119,7 @@ func SinglePackageGraph(repoRoot turbopath.AbsoluteSystemPath, rootPackageJSON *
 }
 
 // BuildPackageGraph constructs a Context instance with information about the package dependency graph
-func BuildPackageGraph(repoRoot turbopath.AbsoluteSystemPath, rootPackageJSON *fs.PackageJSON, cacheDir turbopath.AbsoluteSystemPath) (*Context, error) {
+func BuildPackageGraph(repoRoot turbopath.AbsoluteSystemPath, rootPackageJSON *fs.PackageJSON, cacheDir turbopath.AbsoluteSystemPath, connectDevDeps bool) (*Context, error) {
 	c := &Context{}
 	rootpath := repoRoot.ToStringDuringMigration()
 	c.PackageInfos = make(map[interface{}]*fs.PackageJSON)
@@ -168,7 +168,7 @@ func BuildPackageGraph(repoRoot turbopath.AbsoluteSystemPath, rootPackageJSON *f
 	for _, pkg := range c.PackageInfos {
 		pkg := pkg
 		populateGraphWaitGroup.Go(func() error {
-			return c.populateTopologicGraphForPackageJSON(pkg, rootpath, pkg.Name)
+			return c.populateTopologicGraphForPackageJSON(pkg, rootpath, pkg.Name, connectDevDeps)
 		})
 	}
 
@@ -178,7 +178,7 @@ func BuildPackageGraph(repoRoot turbopath.AbsoluteSystemPath, rootPackageJSON *f
 	// Resolve dependencies for the root package. We override the vertexName in the graph
 	// for the root package, since it can have an arbitrary name. We need it to have our
 	// RootPkgName so that we can identify it as the root later on.
-	err = c.populateTopologicGraphForPackageJSON(rootPackageJSON, rootpath, util.RootPkgName)
+	err = c.populateTopologicGraphForPackageJSON(rootPackageJSON, rootpath, util.RootPkgName, connectDevDeps)
 	if err != nil {
 		return nil, fmt.Errorf("failed to resolve dependencies for root package: %v", err)
 	}
@@ -224,35 +224,51 @@ func (c *Context) resolveWorkspaceRootDeps(rootPackageJSON *fs.PackageJSON) erro
 	return nil
 }
 
+type depScope int
+
+const (
+	normal depScope = iota
+	dev
+	optional
+)
+
+type depCtx struct {
+	version string
+	scope   depScope
+}
+
 // populateTopologicGraphForPackageJSON fills in the edges for the dependencies of the given package
 // that are within the monorepo, as well as collecting and hashing the dependencies of the package
 // that are not within the monorepo. The vertexName is used to override the package name in the graph.
 // This can happen when adding the root package, which can have an arbitrary name.
-func (c *Context) populateTopologicGraphForPackageJSON(pkg *fs.PackageJSON, rootpath string, vertexName string) error {
+func (c *Context) populateTopologicGraphForPackageJSON(pkg *fs.PackageJSON, rootpath string, vertexName string, connectDevDeps bool) error {
 	c.mutex.Lock()
 	defer c.mutex.Unlock()
-	depMap := make(map[string]string)
+	depMap := make(map[string]*depCtx)
 	internalDepsSet := make(dag.Set)
 	externalUnresolvedDepsSet := make(dag.Set)
 	externalDepSet := mapset.NewSet()
 	pkg.UnresolvedExternalDeps = make(map[string]string)
 
 	for dep, version := range pkg.DevDependencies {
-		depMap[dep] = version
+		depMap[dep] = &depCtx{version: version, scope: dev}
 	}
 
 	for dep, version := range pkg.OptionalDependencies {
-		depMap[dep] = version
+		depMap[dep] = &depCtx{version: version, scope: optional}
 	}
 
 	for dep, version := range pkg.Dependencies {
-		depMap[dep] = version
+		depMap[dep] = &depCtx{version: version, scope: normal}
 	}
 
 	// split out internal vs. external deps
-	for depName, depVersion := range depMap {
-		if item, ok := c.PackageInfos[depName]; ok && isWorkspaceReference(item.Version, depVersion, pkg.Dir.ToStringDuringMigration(), rootpath) {
+	for depName, dep := range depMap {
+		if item, ok := c.PackageInfos[depName]; ok && isWorkspaceReference(item.Version, dep.version, pkg.Dir.ToStringDuringMigration(), rootpath) {
 			internalDepsSet.Add(depName)
+			if dep.scope == dev && !connectDevDeps {
+				continue
+			}
 			c.TopologicalGraph.Connect(dag.BasicEdge(vertexName, depName))
 		} else {
 			externalUnresolvedDepsSet.Add(depName)

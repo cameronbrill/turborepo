@@ -88,7 +88,7 @@ func (p *prune) prune(opts *opts) error {
 	if err != nil {
 		return fmt.Errorf("failed to read package.json: %w", err)
 	}
-	ctx, err := context.BuildPackageGraph(p.base.RepoRoot, rootPackageJSON, cacheDir)
+	ctx, err := context.BuildPackageGraph(p.base.RepoRoot, rootPackageJSON, cacheDir, true)
 	if err != nil {
 		return errors.Wrap(err, "could not construct graph")
 	}
