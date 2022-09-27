@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"testing"
 
-	"github.com/vercel/turborepo/cli/internal/turbopath"
+	"github.com/cameronbrill/turborepo/cli/internal/turbopath"
 	"gotest.tools/v3/assert"
 )
 

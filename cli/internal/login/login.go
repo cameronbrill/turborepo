@@ -9,12 +9,12 @@ import (
 	"os"
 	"os/signal"
 
+	"github.com/cameronbrill/turborepo/cli/internal/client"
+	"github.com/cameronbrill/turborepo/cli/internal/cmdutil"
+	"github.com/cameronbrill/turborepo/cli/internal/ui"
+	"github.com/cameronbrill/turborepo/cli/internal/util"
+	"github.com/cameronbrill/turborepo/cli/internal/util/browser"
 	"github.com/pkg/errors"
-	"github.com/vercel/turborepo/cli/internal/client"
-	"github.com/vercel/turborepo/cli/internal/cmdutil"
-	"github.com/vercel/turborepo/cli/internal/ui"
-	"github.com/vercel/turborepo/cli/internal/util"
-	"github.com/vercel/turborepo/cli/internal/util/browser"
 
 	"github.com/spf13/cobra"
 )

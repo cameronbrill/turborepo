@@ -3,7 +3,7 @@ package info
 import (
 	"os"
 
-	"github.com/vercel/turborepo/cli/internal/cmdutil"
+	"github.com/cameronbrill/turborepo/cli/internal/cmdutil"
 
 	"github.com/spf13/cobra"
 )

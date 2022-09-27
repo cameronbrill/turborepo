@@ -12,8 +12,8 @@ import (
 
 	"github.com/Masterminds/semver"
 	"github.com/andybalholm/crlf"
+	"github.com/cameronbrill/turborepo/cli/internal/turbopath"
 	"github.com/pkg/errors"
-	"github.com/vercel/turborepo/cli/internal/turbopath"
 	"gopkg.in/yaml.v3"
 )
 

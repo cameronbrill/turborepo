@@ -7,9 +7,9 @@ import (
 	"sync/atomic"
 	"time"
 
+	"github.com/cameronbrill/turborepo/cli/internal/fs"
+	"github.com/cameronbrill/turborepo/cli/internal/turbopath"
 	"github.com/pkg/errors"
-	"github.com/vercel/turborepo/cli/internal/fs"
-	"github.com/vercel/turborepo/cli/internal/turbopath"
 )
 
 // CookieWaiter is the interface used by clients that need to wait

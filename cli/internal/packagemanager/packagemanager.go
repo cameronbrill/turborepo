@@ -12,11 +12,11 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/vercel/turborepo/cli/internal/fs"
-	"github.com/vercel/turborepo/cli/internal/globby"
-	"github.com/vercel/turborepo/cli/internal/lockfile"
-	"github.com/vercel/turborepo/cli/internal/turbopath"
-	"github.com/vercel/turborepo/cli/internal/util"
+	"github.com/cameronbrill/turborepo/cli/internal/fs"
+	"github.com/cameronbrill/turborepo/cli/internal/globby"
+	"github.com/cameronbrill/turborepo/cli/internal/lockfile"
+	"github.com/cameronbrill/turborepo/cli/internal/turbopath"
+	"github.com/cameronbrill/turborepo/cli/internal/util"
 )
 
 // PackageManager is an abstraction across package managers

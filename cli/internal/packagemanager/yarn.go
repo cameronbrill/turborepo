@@ -7,9 +7,9 @@ import (
 	"strings"
 
 	"github.com/Masterminds/semver"
-	"github.com/vercel/turborepo/cli/internal/fs"
-	"github.com/vercel/turborepo/cli/internal/lockfile"
-	"github.com/vercel/turborepo/cli/internal/turbopath"
+	"github.com/cameronbrill/turborepo/cli/internal/fs"
+	"github.com/cameronbrill/turborepo/cli/internal/lockfile"
+	"github.com/cameronbrill/turborepo/cli/internal/turbopath"
 )
 
 var nodejsYarn = PackageManager{

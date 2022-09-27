@@ -8,16 +8,16 @@ import (
 	"os"
 	"testing"
 
+	"github.com/cameronbrill/turborepo/cli/internal/client"
+	"github.com/cameronbrill/turborepo/cli/internal/cmdutil"
+	"github.com/cameronbrill/turborepo/cli/internal/config"
+	"github.com/cameronbrill/turborepo/cli/internal/fs"
+	"github.com/cameronbrill/turborepo/cli/internal/turbopath"
+	"github.com/cameronbrill/turborepo/cli/internal/ui"
+	"github.com/cameronbrill/turborepo/cli/internal/util"
 	"github.com/hashicorp/go-hclog"
 	"github.com/pkg/errors"
 	"github.com/spf13/pflag"
-	"github.com/vercel/turborepo/cli/internal/client"
-	"github.com/vercel/turborepo/cli/internal/cmdutil"
-	"github.com/vercel/turborepo/cli/internal/config"
-	"github.com/vercel/turborepo/cli/internal/fs"
-	"github.com/vercel/turborepo/cli/internal/turbopath"
-	"github.com/vercel/turborepo/cli/internal/ui"
-	"github.com/vercel/turborepo/cli/internal/util"
 	"gotest.tools/v3/assert"
 )
 

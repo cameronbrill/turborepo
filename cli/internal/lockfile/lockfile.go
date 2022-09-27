@@ -4,7 +4,7 @@ package lockfile
 import (
 	"io"
 
-	"github.com/vercel/turborepo/cli/internal/turbopath"
+	"github.com/cameronbrill/turborepo/cli/internal/turbopath"
 )
 
 // Lockfile Interface for general operations that work accross all lockfiles

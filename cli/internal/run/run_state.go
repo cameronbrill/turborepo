@@ -5,10 +5,10 @@ import (
 	"sync"
 	"time"
 
-	"github.com/vercel/turborepo/cli/internal/chrometracing"
-	"github.com/vercel/turborepo/cli/internal/fs"
-	"github.com/vercel/turborepo/cli/internal/ui"
-	"github.com/vercel/turborepo/cli/internal/util"
+	"github.com/cameronbrill/turborepo/cli/internal/chrometracing"
+	"github.com/cameronbrill/turborepo/cli/internal/fs"
+	"github.com/cameronbrill/turborepo/cli/internal/ui"
+	"github.com/cameronbrill/turborepo/cli/internal/util"
 
 	"github.com/mitchellh/cli"
 )

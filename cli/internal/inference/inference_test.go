@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/vercel/turborepo/cli/internal/fs"
+	"github.com/cameronbrill/turborepo/cli/internal/fs"
 )
 
 func getFrameworkBySlug(slug string) *Framework {

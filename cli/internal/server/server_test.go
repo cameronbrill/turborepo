@@ -9,8 +9,8 @@ import (
 	"google.golang.org/grpc"
 	"gotest.tools/v3/assert"
 
-	turbofs "github.com/vercel/turborepo/cli/internal/fs"
-	"github.com/vercel/turborepo/cli/internal/turbodprotocol"
+	turbofs "github.com/cameronbrill/turborepo/cli/internal/fs"
+	"github.com/cameronbrill/turborepo/cli/internal/turbodprotocol"
 )
 
 type mockGrpc struct {

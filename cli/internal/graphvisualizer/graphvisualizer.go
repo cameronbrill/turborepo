@@ -6,12 +6,12 @@ import (
 	"path/filepath"
 	"strings"
 
+	"github.com/cameronbrill/turborepo/cli/internal/turbopath"
+	"github.com/cameronbrill/turborepo/cli/internal/ui"
+	"github.com/cameronbrill/turborepo/cli/internal/util/browser"
 	"github.com/fatih/color"
 	"github.com/mitchellh/cli"
 	"github.com/pyr-sh/dag"
-	"github.com/vercel/turborepo/cli/internal/turbopath"
-	"github.com/vercel/turborepo/cli/internal/ui"
-	"github.com/vercel/turborepo/cli/internal/util/browser"
 )
 
 // GraphVisualizer requirements

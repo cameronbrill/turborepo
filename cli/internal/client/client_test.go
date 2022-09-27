@@ -10,9 +10,9 @@ import (
 	"reflect"
 	"testing"
 
+	"github.com/cameronbrill/turborepo/cli/internal/util"
 	"github.com/google/uuid"
 	"github.com/hashicorp/go-hclog"
-	"github.com/vercel/turborepo/cli/internal/util"
 )
 
 func Test_sendToServer(t *testing.T) {

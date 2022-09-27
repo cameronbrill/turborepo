@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	"github.com/vercel/turborepo/cli/internal/cmd"
+	"github.com/cameronbrill/turborepo/cli/internal/cmd"
 )
 
 func main() {

@@ -1,8 +1,8 @@
 package auth
 
 import (
-	"github.com/vercel/turborepo/cli/internal/cmdutil"
-	"github.com/vercel/turborepo/cli/internal/util"
+	"github.com/cameronbrill/turborepo/cli/internal/cmdutil"
+	"github.com/cameronbrill/turborepo/cli/internal/util"
 
 	"github.com/spf13/cobra"
 )

@@ -8,7 +8,7 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/vercel/turborepo/cli/internal/xxhash"
+	"github.com/cameronbrill/turborepo/cli/internal/xxhash"
 )
 
 func HashObject(i interface{}) (string, error) {

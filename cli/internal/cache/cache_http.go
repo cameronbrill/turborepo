@@ -18,8 +18,8 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/vercel/turborepo/cli/internal/analytics"
-	"github.com/vercel/turborepo/cli/internal/turbopath"
+	"github.com/cameronbrill/turborepo/cli/internal/analytics"
+	"github.com/cameronbrill/turborepo/cli/internal/turbopath"
 )
 
 type client interface {

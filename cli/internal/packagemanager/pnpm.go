@@ -5,8 +5,8 @@ import (
 	"io/ioutil"
 
 	"github.com/Masterminds/semver"
-	"github.com/vercel/turborepo/cli/internal/lockfile"
-	"github.com/vercel/turborepo/cli/internal/turbopath"
+	"github.com/cameronbrill/turborepo/cli/internal/lockfile"
+	"github.com/cameronbrill/turborepo/cli/internal/turbopath"
 	"gopkg.in/yaml.v3"
 )
 

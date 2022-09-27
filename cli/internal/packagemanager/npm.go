@@ -3,8 +3,8 @@ package packagemanager
 import (
 	"fmt"
 
-	"github.com/vercel/turborepo/cli/internal/fs"
-	"github.com/vercel/turborepo/cli/internal/turbopath"
+	"github.com/cameronbrill/turborepo/cli/internal/fs"
+	"github.com/cameronbrill/turborepo/cli/internal/turbopath"
 )
 
 var nodejsNpm = PackageManager{

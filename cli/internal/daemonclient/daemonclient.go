@@ -5,9 +5,9 @@ package daemonclient
 import (
 	"context"
 
-	"github.com/vercel/turborepo/cli/internal/daemon/connector"
-	"github.com/vercel/turborepo/cli/internal/turbodprotocol"
-	"github.com/vercel/turborepo/cli/internal/turbopath"
+	"github.com/cameronbrill/turborepo/cli/internal/daemon/connector"
+	"github.com/cameronbrill/turborepo/cli/internal/turbodprotocol"
+	"github.com/cameronbrill/turborepo/cli/internal/turbopath"
 )
 
 // DaemonClient provides access to higher-level functionality from the daemon to a turbo run.

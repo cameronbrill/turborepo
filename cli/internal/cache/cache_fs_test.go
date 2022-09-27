@@ -6,8 +6,8 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/vercel/turborepo/cli/internal/analytics"
-	"github.com/vercel/turborepo/cli/internal/turbopath"
+	"github.com/cameronbrill/turborepo/cli/internal/analytics"
+	"github.com/cameronbrill/turborepo/cli/internal/turbopath"
 	"gotest.tools/v3/assert"
 )
 

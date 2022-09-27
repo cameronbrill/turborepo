@@ -9,13 +9,13 @@ import (
 	"path/filepath"
 	"sync"
 
+	"github.com/cameronbrill/turborepo/cli/internal/doublestar"
+	"github.com/cameronbrill/turborepo/cli/internal/fs"
+	"github.com/cameronbrill/turborepo/cli/internal/turbopath"
 	"github.com/fsnotify/fsnotify"
 	"github.com/hashicorp/go-hclog"
 	"github.com/karrick/godirwalk"
 	"github.com/pkg/errors"
-	"github.com/vercel/turborepo/cli/internal/doublestar"
-	"github.com/vercel/turborepo/cli/internal/fs"
-	"github.com/vercel/turborepo/cli/internal/turbopath"
 )
 
 // watchAddMode is used to indicate whether watchRecursively should synthesize events
